@@ -1,0 +1,272 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "Dataset",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "CascadeEval",
+  "alternateName": "CascadeEval: Stage-Level Evaluation for Multi-Stage LLM Defense Pipelines",
+  "description": "CascadeEval is a staged evaluation artifact for Input Guard -> Target LLM -> Output Guard defense pipelines. The staging snapshot contains 7,010 jailbreak prompts, 275 complete defense configurations, stage-level logs, a stage-level Knowledge Base, C3A adaptive stress-test outputs, and human-evaluation calibration materials. Raw harmful prompt data should be released through gated or reviewer-accessible channels.",
+  "version": "1.0.0",
+  "dateCreated": "2026-05-06",
+  "datePublished": "2026-05-06",
+  "isAccessibleForFree": false,
+  "citeAs": "Anonymous authors. CascadeEval: Stage-Level Evaluation for Multi-Stage LLM Defense Pipelines. NeurIPS Evaluations and Datasets submission artifact, 2026.",
+  "citation": "Anonymous authors. CascadeEval: Stage-Level Evaluation for Multi-Stage LLM Defense Pipelines. NeurIPS Evaluations and Datasets submission artifact, 2026.",
+  "license": "CC BY 4.0 for documentation, metadata, aggregate statistics, and derived tables; MIT for CascadeEval-authored scripts; Custom Gated Research-Use Terms for raw harmful prompts, model responses, adaptive traces, and KB retrieval exemplars.",
+  "creator": [
+    {
+      "@type": "Organization",
+      "name": "Anonymous authors"
+    }
+  ],
+  "keywords": [
+    "LLM safety",
+    "multi-stage defense",
+    "jailbreak evaluation",
+    "guardrails",
+    "red teaming",
+    "stage-level attribution"
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "en_v2_results_7010",
+      "name": "en_v2_results_7010.csv",
+      "contentUrl": "data/en_v2_results_7010.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "1d5c4e06ec14ce57bf7f0be87873836989ed8a593b75578b4f650e5731263839"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "knowledge_base",
+      "name": "knowledge_base.json",
+      "contentUrl": "data/knowledge_base.json",
+      "encodingFormat": "application/json",
+      "sha256": "55abda8b3cc1a4915d7d53230b91463d2a97c2ddbeba50aa71a81c81c7ee4606"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_jbb_goals",
+      "name": "c3a_jbb_goals.json",
+      "contentUrl": "data/c3a_jbb_goals.json",
+      "encodingFormat": "application/json",
+      "sha256": "ec56b9e38b0343b75ea603ff1d66af26b8a023dd306f2ce0d55cfcfa512a1a54"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_stage_distribution",
+      "name": "c3a_stage_distribution.csv",
+      "contentUrl": "data/c3a_stage_distribution.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "2c0bb657c651ffadf19461cbbb6f5a846a63fb695d1a2fe57cab1db38ed1f219"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "audit_configuration_asr",
+      "name": "audit_configuration_asr.csv",
+      "contentUrl": "data/audit_configuration_asr.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "adefdab9653f0b5e4cfd8a8e24a23d384ede8540e14c8fb7ae8a6708dbaead8a"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "audit_summary_ci",
+      "name": "audit_summary_ci.csv",
+      "contentUrl": "data/audit_summary_ci.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "6a1025997091501d35b63ac96b30be5d77c4c38ac970272f065b4d4fa71cd0a7"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_asr_ci",
+      "name": "c3a_asr_ci.csv",
+      "contentUrl": "data/c3a_asr_ci.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "9c5db8024e524476595c28baba803ad04db3441f2487b838b2ed1e15611d3352"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_delta_ci",
+      "name": "c3a_delta_ci.csv",
+      "contentUrl": "data/c3a_delta_ci.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "08988a4f454ca8de890226359523c5f3a56964ad0f0dbdac3cf49d78612f3d6a"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_cost_table",
+      "name": "c3a_cost_table.csv",
+      "contentUrl": "data/c3a_cost_table.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "bb13ad2faef683501e88b6a35ca9d6f38cd963fdfd24ecf9696cd6f979e60953"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_guidance_distribution",
+      "name": "c3a_guidance_distribution.csv",
+      "contentUrl": "data/c3a_guidance_distribution.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "2b885899fdc7ca0d7abfb9c692f22361e5fe1e53b2542182206fd5a4e1dfafc3"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_online_run_part2_bc_full",
+      "name": "part2_bc_full_20260503/aggregated_results.json",
+      "contentUrl": "data/raw/results/c3a/part2_bc_full_20260503/aggregated_results.json",
+      "encodingFormat": "application/json",
+      "sha256": "73cd1d08150ea67ce2463f819737786434867a32f5f16495e5ed9f0a8c465fd9"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_online_run_config16_full",
+      "name": "kb_holdout_config16_full/aggregated_results.json",
+      "contentUrl": "data/raw/results/c3a/kb_holdout_config16_full/aggregated_results.json",
+      "encodingFormat": "application/json",
+      "sha256": "0f7790dd87c016439a776f0d488b64bcda4924e28e4cb50a57925e5647e4a463"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "c3a_online_run_config16_reduced",
+      "name": "kb_holdout_config16_reduced/aggregated_results.json",
+      "contentUrl": "data/raw/results/c3a/kb_holdout_config16_reduced/aggregated_results.json",
+      "encodingFormat": "application/json",
+      "sha256": "8bbda8d7bb3f82bfc0023fd0e76840fb795c17aafdc3a301a7afc7e98411c8ef"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "name": "stage_level_evaluations",
+      "description": "Prompt-level stage records for 7,010 jailbreak prompts and evaluated defense components.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "unique_id",
+          "description": "Prompt-row identifier.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "en_v2_results_7010"
+            },
+            "extract": {
+              "column": "unique_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "prompt_text_en",
+          "description": "Jailbreak prompt text. Contains harmful content and should be gated.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "en_v2_results_7010"
+            },
+            "extract": {
+              "column": "prompt_text_en"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "taxonomy_intent",
+          "description": "Intent taxonomy label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "en_v2_results_7010"
+            },
+            "extract": {
+              "column": "taxonomy_intent"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "name": "c3a_jbb_goals",
+      "description": "The 100 JailbreakBench JBB-Behaviors goals used for C3A online evaluation. Contains harmful goal text and is gated."
+    },
+    {
+      "@type": "cr:RecordSet",
+      "name": "c3a_results",
+      "description": "Paper-ready C3A result tables and confidence intervals."
+    },
+    {
+      "@type": "cr:RecordSet",
+      "name": "c3a_stage_distribution",
+      "description": "Stage-distribution diagnostics for Config A/B/C C3A runs."
+    },
+    {
+      "@type": "cr:RecordSet",
+      "name": "c3a_guidance_distribution",
+      "description": "Guidance-type diagnostics for Config A/B/C C3A runs."
+    }
+  ],
+  "rai:personalSensitiveInformation": "No personal information is intentionally collected as a dataset field. Free-form prompts, responses, and annotator comments may contain incidental personal, credential-like, or operational strings; raw files are therefore gated and subject to takedown review.",
+  "rai:dataBiases": "The prompt corpus is derived from atmaCup #21 materials and subsequent English normalization, deduplication, and taxonomy labeling. It reflects competition incentives, prompt-battle behavior, selected harmfulness categories, and the evaluated guard/model grid rather than all real-world misuse patterns.",
+  "rai:annotationsPerItem": "Human calibration uses a stratified 240-sample set with multiple independent annotations per item and an aggregate human-majority label. Public releases should expose anonymized or aggregate labels only.",
+  "rai:useCases": {
+    "rai:intendedUseCase": [
+      "Authorized research on multi-stage LLM safety evaluation.",
+      "Stage-level attribution of Input Guard, Target LLM, and Output Guard behavior.",
+      "Reproduction of CascadeEval paper tables, figures, and confidence intervals.",
+      "Defensive analysis of bottleneck-dependent adaptive stress testing."
+    ],
+    "rai:discouragedUseCase": [
+      "Training or fine-tuning systems for harmful generation.",
+      "Building operational jailbreak tooling or prompt libraries.",
+      "Attacking deployed systems without authorization.",
+      "Redistributing raw harmful prompts, model responses, adaptive traces, or KB exemplars outside the gated process."
+    ]
+  },
+  "rai:limitations": "Contains harmful jailbreak prompts and model outputs. Does not constitute a deployment-safety certification. Raw harmful data should be gated.",
+  "rai:misuseRisk": "Raw prompts, model responses, successful adaptive traces, and KB exemplars could be misused to improve jailbreak attempts. The recommended release mode is gated or reviewer-accessible distribution.",
+  "rai:dataCollection": "The artifact aggregates jailbreak prompts, stage-level defense outcomes, C3A adaptive stress-test logs, and human-evaluation calibration summaries collected for CascadeEval. The release uses an internal IRB-equivalent safeguard review for harmful-content research artifacts: gated raw access, misuse restrictions, anonymized human-evaluation outputs, and a reporting path for takedown or harmful-content concerns. Human annotators were engaged for harmfulness calibration under an annotation protocol with content warning, blinding to configuration metadata, and anonymized public identifiers. Competition-source prompt consent and redistribution are governed by atmaCup #21/platform rules. The authors have obtained permission to include atmaCup #21-derived prompt data in the CascadeEval submission artifact under gated or reviewer-accessible research access; raw prompt text remains gated and is not treated as unrestricted public data."
+}

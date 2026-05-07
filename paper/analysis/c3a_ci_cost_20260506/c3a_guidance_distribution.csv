@@ -1,0 +1,17 @@
+config_label,bottleneck,method,category,count,share,total_iterations,source
+Config A,IG,c3a,FALLBACK,82,0.051059,1606,kb_holdout_config16_full/aggregated_results.json
+Config A,IG,c3a,LEX,67,0.041719,1606,kb_holdout_config16_full/aggregated_results.json
+Config A,IG,c3a,ORTH,715,0.445205,1606,kb_holdout_config16_full/aggregated_results.json
+Config A,IG,c3a,PRAG,393,0.244707,1606,kb_holdout_config16_full/aggregated_results.json
+Config A,IG,c3a,SEM,349,0.217310,1606,kb_holdout_config16_full/aggregated_results.json
+Config B,LLM,c3a,FALLBACK,98,0.082840,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config B,LLM,c3a,LEX,90,0.076078,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config B,LLM,c3a,MSYN,6,0.005072,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config B,LLM,c3a,ORTH,183,0.154691,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config B,LLM,c3a,PRAG,365,0.308538,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config B,LLM,c3a,SEM,441,0.372781,1183,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/google_shieldgemma-2b__microsoft_phi-4__meta-llama_Llama-Guard-3-8B/c3a/results.json
+Config C,OG,c3a,FALLBACK,108,0.068398,1579,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/Qwen_Qwen3Guard-Gen-0.6B__mistralai_Ministral-8B-Instruct-2410__allenai_wildguard/c3a/results.json
+Config C,OG,c3a,LEX,65,0.041165,1579,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/Qwen_Qwen3Guard-Gen-0.6B__mistralai_Ministral-8B-Instruct-2410__allenai_wildguard/c3a/results.json
+Config C,OG,c3a,ORTH,752,0.476251,1579,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/Qwen_Qwen3Guard-Gen-0.6B__mistralai_Ministral-8B-Instruct-2410__allenai_wildguard/c3a/results.json
+Config C,OG,c3a,PRAG,338,0.214060,1579,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/Qwen_Qwen3Guard-Gen-0.6B__mistralai_Ministral-8B-Instruct-2410__allenai_wildguard/c3a/results.json
+Config C,OG,c3a,SEM,316,0.200127,1579,paper/data/gpu_results_20260505/raw/results/c3a/part2_bc_full_20260503/experiments/Qwen_Qwen3Guard-Gen-0.6B__mistralai_Ministral-8B-Instruct-2410__allenai_wildguard/c3a/results.json

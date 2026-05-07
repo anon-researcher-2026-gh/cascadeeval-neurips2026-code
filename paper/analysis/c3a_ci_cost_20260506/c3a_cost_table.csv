@@ -1,0 +1,13 @@
+config,bottleneck,method,n,successes,mean_iterations,total_iterations,attacker_api_calls_proxy,target_api_calls_proxy,estimated_api_cost_usd_proxy,estimated_api_cost_usd_per_behavior_proxy,estimated_api_cost_usd_per_success_proxy,mean_wallclock_seconds,total_wallclock_minutes,cost_assumption
+Config A,IG,Direct,100,0,1.00,100,0,100,0.0300,0.0003,,0.81,1.36,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config A,IG,C3A w/o KB,100,33,16.38,1638,1638,1638,0.9828,0.0098,0.0298,227.27,378.79,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config A,IG,C3A config-holdout KB,100,30,16.24,1624,1624,1624,0.9744,0.0097,0.0325,109.59,182.65,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config A,IG,C3A full KB,100,32,16.06,1606,1606,1606,0.9636,0.0096,0.0301,115.10,191.83,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config B,LLM,Direct,100,0,1.00,100,0,0,0.0000,0.0000,,6.26,10.43,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config B,LLM,PAIR,100,31,15.95,1595,1595,0,0.4785,0.0048,0.0154,369.88,616.46,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config B,LLM,C3A w/o KB,100,24,16.92,1692,1692,0,0.5076,0.0051,0.0211,471.15,785.24,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config B,LLM,C3A full KB,100,60,11.83,1183,1183,0,0.3549,0.0035,0.0059,233.29,388.81,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config C,OG,Direct,100,0,1.00,100,0,0,0.0000,0.0000,,1.07,1.78,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config C,OG,PAIR,100,47,13.22,1322,1322,0,0.3966,0.0040,0.0084,228.38,380.63,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config C,OG,C3A w/o KB,100,34,16.08,1608,1608,0,0.4824,0.0048,0.0142,342.62,571.03,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged
+Config C,OG,C3A full KB,100,34,15.79,1579,1579,0,0.4737,0.0047,0.0139,168.42,280.70,attacker GPT-4o-mini $0.0003/proxy-call; API target if applicable; local guards/judge $0; token-level usage not logged

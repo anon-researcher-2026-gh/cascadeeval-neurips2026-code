@@ -1,0 +1,116 @@
+# Single source of truth for paper-writing.
+# Rules:
+# - `verified` contains values backed by the current local artifact bundle.
+# - `unresolved` contains draft claims that must not be copied into the paper body
+#   until provenance is recovered.
+
+meta:
+  generated_on: "2026-05-07"
+  scope: "verified CascadeEval submission bundle"
+
+verified:
+  audit:
+    n_attacks: 7010
+    n_configs_complete: 275
+    n_target_llms: 11
+    asr_min: 0.179
+    asr_max: 0.460
+    asr_median: 0.319
+    asr_mean: 0.322
+    marginal_block_ig: 0.343
+    marginal_block_llm: 0.249
+    marginal_block_og: 0.165
+    marginal_block_ig_bootstrap95: [0.335, 0.350]
+    marginal_block_llm_bootstrap95: [0.240, 0.258]
+    marginal_block_og_bootstrap95: [0.155, 0.174]
+    survival_after_ig: 0.657
+    survival_after_llm: 0.540
+    survival_after_og: 0.484
+    survival_after_ig_bootstrap95: [0.650, 0.665]
+    survival_after_llm_bootstrap95: [0.533, 0.548]
+    survival_after_og_bootstrap95: [0.477, 0.491]
+    harmful_given_emitted: 0.661
+    harmful_given_emitted_bootstrap95: [0.655, 0.667]
+    bottleneck_ig: 0.796
+    bottleneck_llm: 0.164
+    bottleneck_og: 0.040
+    asr_mean_bootstrap95: [0.315, 0.328]
+    asr_median_bootstrap95: [0.313, 0.326]
+    asr_q25: 0.282
+    asr_q75: 0.357
+    bottleneck_ig_bootstrap95: [0.749, 0.844]
+    bottleneck_llm_bootstrap95: [0.120, 0.211]
+    bottleneck_og_bootstrap95: [0.018, 0.065]
+    ci_source: "paper/analysis/c3a_ci_cost_20260506/audit_summary_ci.csv"
+
+  human_eval:
+    source_sample_count: 240
+    majority_defined_count: 239
+    agreement_raw: 0.5983
+    cohen_kappa_raw_exact: 0.194
+    cohen_kappa_raw_rounded: 0.19
+    tau_star_exact: 0.709
+    tau_star_rounded: 0.71
+    agreement_calibrated: 0.879
+    cohen_kappa_calibrated_exact: 0.498
+    cohen_kappa_calibrated_rounded: 0.50
+    fleiss_kappa_threeway: 0.270
+    fleiss_kappa_binary: 0.305
+    raw_false_positive_rate: 0.4429
+    raw_false_negative_rate: 0.1034
+    calibrated_false_positive_rate: 0.090
+    calibrated_false_negative_rate: 0.345
+    # Legacy aliases for the raw binary judge; do not cite these as calibrated errors.
+    false_positive_rate: 0.4429
+    false_negative_rate: 0.1034
+
+  c3a:
+    config_a_current_holdout:
+      direct: 0.00
+      c3a_no_kb: 0.33
+      c3a_config_holdout_kb: 0.30
+      c3a_full_kb: 0.32
+    config_a_pair_remote:
+      pair: 0.44
+      n_goals: 100
+      successes: 44
+      source_sha256: "e48ac8064e5a0501b0d87a7f9b01c5f38f667d91b68782acc443d61664db7cf6"
+      local_provenance: "experiments/cascadeeval_provenance_20260506/legacy_20260502/config_a_verified_pair.csv"
+      abstract_use: false
+      reason_not_abstract: "Not part of the current matched local Config A hold-out comparison table."
+    config_b_lite:
+      direct: 0.00
+      c3a_no_kb: 0.16
+      c3a_full: 0.38
+    config_c_lite:
+      direct: 0.00
+      c3a_no_kb: 0.32
+      c3a_full: 0.34
+    config_b_full_100:
+      direct: 0.00
+      pair: 0.31
+      c3a_no_kb: 0.24
+      c3a_full: 0.60
+      n_goals: 100
+      source: "paper/data/gpu_results_20260505/bc_full_100_results.csv"
+      c3a_full_bootstrap95: [0.51, 0.69]
+      c3a_full_minus_no_kb: 0.36
+      c3a_full_minus_no_kb_paired_bootstrap95: [0.26, 0.46]
+      c3a_full_minus_pair: 0.29
+      c3a_full_minus_pair_paired_bootstrap95: [0.19, 0.39]
+    config_c_full_100:
+      direct: 0.00
+      pair: 0.47
+      c3a_no_kb: 0.34
+      c3a_full: 0.34
+      n_goals: 100
+      source: "paper/data/gpu_results_20260505/bc_full_100_results.csv"
+      c3a_full_bootstrap95: [0.25, 0.44]
+      c3a_full_minus_no_kb: 0.00
+      c3a_full_minus_no_kb_paired_bootstrap95: [-0.11, 0.11]
+      c3a_full_minus_pair: -0.13
+      c3a_full_minus_pair_paired_bootstrap95: [-0.24, -0.02]
+    ci_source: "paper/analysis/c3a_ci_cost_20260506/c3a_asr_ci.csv"
+    delta_ci_source: "paper/analysis/c3a_ci_cost_20260506/c3a_delta_ci.csv"
+    cost_source: "paper/analysis/c3a_ci_cost_20260506/c3a_cost_table.csv"
+    cost_proxy_note: "Token-level provider usage was not logged; dollar costs are estimator proxies, not billing receipts."

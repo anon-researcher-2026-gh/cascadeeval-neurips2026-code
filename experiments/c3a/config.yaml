@@ -1,0 +1,228 @@
+# C3A Part 2 実験設定
+
+# 実験基本設定
+experiment:
+  name: "c3a_part2_evaluation"
+  seed: 42
+  max_iterations: 20  # 各攻撃の最大試行回数
+
+# 評価対象エージェント
+# C3A Ablation モード:
+#   - c3a (c3a-full): 全機能有効 - Guard固有情報 + Few-shot（適応型攻撃モデル）
+#   - c3a-fair: Guard固有情報なし、一般統計のみ
+#   - c3a-no-fewshot: Few-shot例なし、統計のみ
+#   - c3a-minimal: 最小限（Guard固有情報なし、Few-shotなし）
+#   - c3a-nokb: KBなし（Stage情報のみ使用）
+#
+# 脅威モデル: 適応型攻撃者（Adaptive Attacker）
+#   攻撃者が防御システムを特定し、事前解析できる現実的なシナリオを想定
+#   (Carlini & Wagner 2017, Athalye et al. 2018 に準拠)
+agents:
+  - c3a           # 提案手法（適応型攻撃モデル）
+  - pair          # PAIR ベースライン (Chao et al., 2023)
+  - direct        # Direct Request ベースライン (JailbreakBench 標準)
+  # - c3a-nokb    # Ablation: KB なし
+  # - c3a-fair    # Ablation: Guard固有情報なし
+  # - c3a-minimal # Ablation: 最小限
+
+# 評価対象の防御構成
+# 各構成: input_guard × target_llm × output_guard
+#
+# 利用可能な Guard/LLM (en_v2_results.csv ベース):
+#   Input Guards:  allenai_wildguard, meta-llama_Llama-Guard-3-8B, meta-llama_Llama-Guard-4-12B,
+#                  Qwen_Qwen3Guard-Gen-0.6B, google_shieldgemma-2b
+#   Target LLMs:   gpt-4o, gpt-4o-mini, gemini-2.0-flash, meta-llama_Llama-3.1-8B-Instruct,
+#                  Qwen_Qwen2.5-7B-Instruct, Qwen_Qwen2.5-14B-Instruct, Qwen_Qwen3-8B,
+#                  mistralai_Ministral-8B-Instruct-2410, google_gemma-3-12b-it, GPT-OSS-20B, microsoft_phi-4
+#   Output Guards: (Input Guards と同じ)
+#
+# 選定方針: Bottleneck バランス + 極端値選択 + カバレッジ保証
+#   - Pass Rate 範囲: 32.2% ~ 63.2%（最堅牢〜最脆弱を網羅）
+#   - Bottleneck 分布: IG=6, LLM=5, OG=4（バランス良好）
+#   - カバレッジ: 全 5 IG, 全 11 LLM, 全 5 OG を網羅
+
+configs:
+  # === Phase 2 構成（15 構成）===
+  - name: "config_01"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "Qwen_Qwen2.5-7B-Instruct"
+    output_guard: "google_shieldgemma-2b"
+    description: "最脆弱構成 (ASR: 45.7%, BN: IG)"
+
+  - name: "config_02"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "gpt-4o-mini"
+    output_guard: "google_shieldgemma-2b"
+    description: "ASR: 36.3%, BN: LLM"
+
+  - name: "config_03"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "google_gemma-3-12b-it"
+    output_guard: "allenai_wildguard"
+    description: "ASR: 37.9%, BN: OG"
+
+  - name: "config_04"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "gpt-4o"
+    output_guard: "meta-llama_Llama-Guard-4-12B"
+    description: "ASR: 29.8%, BN: LLM"
+
+  - name: "config_05"
+    input_guard: "meta-llama_Llama-Guard-4-12B"
+    target_llm: "meta-llama_Llama-3.1-8B-Instruct"
+    output_guard: "meta-llama_Llama-Guard-3-8B"
+    description: "ASR: 31.5%, BN: IG"
+
+  - name: "config_06"
+    input_guard: "meta-llama_Llama-Guard-4-12B"
+    target_llm: "Qwen_Qwen2.5-14B-Instruct"
+    output_guard: "google_shieldgemma-2b"
+    description: "ASR: 30.2%, BN: IG"
+
+  - name: "config_07"
+    input_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+    target_llm: "GPT-OSS-20B"
+    output_guard: "meta-llama_Llama-Guard-4-12B"
+    description: "ASR: 33.4%, BN: IG"
+
+  - name: "config_08"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "microsoft_phi-4"
+    output_guard: "meta-llama_Llama-Guard-3-8B"
+    description: "ASR: 28.3%, BN: LLM"
+
+  - name: "config_09"
+    input_guard: "allenai_wildguard"
+    target_llm: "mistralai_Ministral-8B-Instruct-2410"
+    output_guard: "meta-llama_Llama-Guard-3-8B"
+    description: "ASR: 30.8%, BN: IG"
+
+  - name: "config_10"
+    input_guard: "meta-llama_Llama-Guard-3-8B"
+    target_llm: "microsoft_phi-4"
+    output_guard: "google_shieldgemma-2b"
+    description: "ASR: 28.6%, BN: LLM"
+
+  - name: "config_11"
+    input_guard: "google_shieldgemma-2b"
+    target_llm: "Qwen_Qwen3-8B"
+    output_guard: "allenai_wildguard"
+    description: "ASR: 34.4%, BN: OG"
+
+  - name: "config_12"
+    input_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+    target_llm: "mistralai_Ministral-8B-Instruct-2410"
+    output_guard: "allenai_wildguard"
+    description: "ASR: 33.4%, BN: OG"
+
+  - name: "config_13"
+    input_guard: "meta-llama_Llama-Guard-3-8B"
+    target_llm: "gemini-2.0-flash"
+    output_guard: "allenai_wildguard"
+    description: "ASR: 30.0%, BN: OG"
+
+  - name: "config_14"
+    input_guard: "meta-llama_Llama-Guard-4-12B"
+    target_llm: "gemini-2.0-flash"
+    output_guard: "allenai_wildguard"
+    description: "ASR: 23.5%, BN: IG"
+
+  - name: "config_15"
+    input_guard: "meta-llama_Llama-Guard-4-12B"
+    target_llm: "microsoft_phi-4"
+    output_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+    description: "最堅牢構成 (ASR: 17.9%, BN: LLM)"
+
+  - name: "config_16"
+    input_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+    target_llm: "gpt-4o-mini"
+    output_guard: "allenai_wildguard"
+    description: "動作確認済みGuard構成 (Qwen3Guard + WildGuard)"
+
+  # === 旧構成（コメントアウト）===
+  # - name: "config_1"
+  #   input_guard: "meta-llama_Llama-Guard-3-8B"
+  #   target_llm: "gpt-4o-mini"
+  #   output_guard: "meta-llama_Llama-Guard-3-8B"
+  #   description: "LlamaGuard3 + API LLM"
+  #
+  # - name: "config_2"
+  #   input_guard: "allenai_wildguard"
+  #   target_llm: "gpt-4o"
+  #   output_guard: "meta-llama_Llama-Guard-4-12B"
+  #   description: "混合Guard + 高性能API LLM"
+  #
+  # - name: "config_3"
+  #   input_guard: "meta-llama_Llama-Guard-4-12B"
+  #   target_llm: "gpt-4o"
+  #   output_guard: "allenai_wildguard"
+  #   description: "混合Guard + 高性能API LLM"
+  #
+  # - name: "config_4"
+  #   input_guard: "allenai_wildguard"
+  #   target_llm: "meta-llama_Llama-3.1-8B-Instruct"
+  #   output_guard: "google_shieldgemma-2b"
+  #   description: "全ローカル構成"
+  #
+  # - name: "config_5"
+  #   input_guard: "google_shieldgemma-2b"
+  #   target_llm: "gpt-4o-mini"
+  #   output_guard: "allenai_wildguard"
+  #   description: "混合Guard + API LLM"
+  #
+  # - name: "config_6"
+  #   input_guard: "meta-llama_Llama-Guard-4-12B"
+  #   target_llm: "microsoft_phi-4"
+  #   output_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+  #   description: "最も厳しい構成 (pass_rate: 32.2%)"
+  #
+  # - name: "config_7"
+  #   input_guard: "meta-llama_Llama-Guard-4-12B"
+  #   target_llm: "gemini-2.0-flash"
+  #   output_guard: "Qwen_Qwen3Guard-Gen-0.6B"
+  #   description: "Google LLM + 厳しいGuard構成"
+
+# 攻撃目標設定
+# JailbreakBench JBB-Behaviors (NeurIPS 2024)
+# カテゴリ: HD, MH, PH, EH, FD, DI, SA, PD, EA, GD
+goals:
+  path: "experiments/c3a/goals.json"
+  n_goals: 100  # 使用する目標数（null で全件）
+  categories: null  # 全カテゴリを使用（特定カテゴリのみの場合はリストで指定）
+  # categories:
+  #   - MH   # Malware/Hacking
+  #   - PH   # Physical harm
+  #   - PD   # Privacy
+
+# パス設定
+paths:
+  data: "data/processed/en_v2_results.csv"
+  knowledge_base: "experiments/c3a/results/knowledge_base.json"  # Part 1 完了後に生成
+  output_dir: "results/c3a/part2"  # 基底ディレクトリ
+  # 以下は output_dir からの相対パス（自動生成）
+  # experiments_dir: "{output_dir}/experiments"           # 実験結果（config/agent ごと）
+  # index_file: "{output_dir}/experiments/index.json"    # 完了済み実験インデックス
+  # aggregated_file: "{output_dir}/aggregated_results.json"  # 集約結果
+
+# 出力ファイル構造（参考）
+# {output_dir}/
+# ├── experiments/
+# │   ├── index.json                    # 完了済み実験のインデックス
+# │   └── {config_name}/
+# │       └── {agent_name}/
+# │           ├── results.json          # 詳細結果（攻撃履歴付き）
+# │           ├── summary.json          # goal サマリー（軽量版）
+# │           ├── attack_log.csv        # 攻撃ログ（CSV）
+# │           └── attack_log.json       # 攻撃ログ（JSON）
+# └── aggregated_results.json           # 全結果の集約
+
+# コスト制御
+cost:
+  confirm_before_run: true  # 実行前に確認
+  max_budget_usd: 500       # 最大予算（超過時に警告）
+
+# ログ設定
+logging:
+  level: "INFO"
+  save_intermediate: true   # 中間結果を保存
+  checkpoint_interval: 10   # チェックポイント間隔（goal 数）

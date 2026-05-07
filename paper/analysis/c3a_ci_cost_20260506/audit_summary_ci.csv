@@ -1,0 +1,19 @@
+metric,estimate,bootstrap95_lo,bootstrap95_hi,n_boot,resample_unit,source
+audit_n_configs,275,,,,,en_v2_results_7010.csv + knowledge_base.json
+audit_n_prompts,7010,,,,,en_v2_results_7010.csv + knowledge_base.json
+asr_mean_over_configs,0.321643,0.315018,0.328394,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+asr_median_over_configs,0.319258,0.312696,0.325535,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+asr_q25_over_configs,0.282454,0.273894,0.290870,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+asr_q75_over_configs,0.356562,0.348930,0.371826,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+asr_min_observed,0.179315,,,,,en_v2_results_7010.csv + knowledge_base.json
+asr_max_observed,0.459629,,,,,en_v2_results_7010.csv + knowledge_base.json
+marginal_ig_block_rate_mean_over_configs,0.342767,0.335122,0.350383,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+marginal_llm_block_rate_mean_over_configs,0.248606,0.239652,0.257583,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+marginal_og_block_rate_mean_over_configs,0.164726,0.155446,0.174000,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+bottleneck_share_IG,0.796364,0.749091,0.843636,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+bottleneck_share_LLM,0.163636,0.120000,0.210909,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+bottleneck_share_OG,0.040000,0.018182,0.065455,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+survival_after_ig_mean_over_configs,0.657233,0.649787,0.664778,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+survival_after_llm_mean_over_configs,0.540493,0.533377,0.547615,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+survival_after_og_mean_over_configs,0.484216,0.476987,0.491245,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
+harmful_given_emitted_mean_over_configs,0.661005,0.654993,0.666896,10000,configuration,en_v2_results_7010.csv + knowledge_base.json
